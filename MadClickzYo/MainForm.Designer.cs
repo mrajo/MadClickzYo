@@ -34,13 +34,13 @@
             this.lblMouseY = new System.Windows.Forms.Label();
             this.lblMouseCoords = new System.Windows.Forms.Label();
             this.grpClick = new System.Windows.Forms.GroupBox();
+            this.btnClickeroo = new System.Windows.Forms.Button();
+            this.txtClickInterval = new System.Windows.Forms.TextBox();
+            this.lblInterval = new System.Windows.Forms.Label();
             this.lblClickY = new System.Windows.Forms.Label();
             this.lblClickX = new System.Windows.Forms.Label();
             this.txtClickY = new System.Windows.Forms.TextBox();
             this.txtClickX = new System.Windows.Forms.TextBox();
-            this.lblInterval = new System.Windows.Forms.Label();
-            this.txtClicksPerSec = new System.Windows.Forms.TextBox();
-            this.btnClickeroo = new System.Windows.Forms.Button();
             this.grpClick.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -90,7 +90,7 @@
             // grpClick
             // 
             this.grpClick.Controls.Add(this.btnClickeroo);
-            this.grpClick.Controls.Add(this.txtClicksPerSec);
+            this.grpClick.Controls.Add(this.txtClickInterval);
             this.grpClick.Controls.Add(this.lblInterval);
             this.grpClick.Controls.Add(this.lblClickY);
             this.grpClick.Controls.Add(this.lblClickX);
@@ -102,6 +102,32 @@
             this.grpClick.TabIndex = 6;
             this.grpClick.TabStop = false;
             this.grpClick.Text = "Click Parameters";
+            // 
+            // btnClickeroo
+            // 
+            this.btnClickeroo.Location = new System.Drawing.Point(94, 114);
+            this.btnClickeroo.Name = "btnClickeroo";
+            this.btnClickeroo.Size = new System.Drawing.Size(99, 27);
+            this.btnClickeroo.TabIndex = 11;
+            this.btnClickeroo.Text = "Start Clicking";
+            this.btnClickeroo.UseVisualStyleBackColor = true;
+            this.btnClickeroo.Click += new System.EventHandler(this.btnClickeroo_Click);
+            // 
+            // txtClickInterval
+            // 
+            this.txtClickInterval.Location = new System.Drawing.Point(147, 71);
+            this.txtClickInterval.Name = "txtClickInterval";
+            this.txtClickInterval.Size = new System.Drawing.Size(46, 20);
+            this.txtClickInterval.TabIndex = 10;
+            // 
+            // lblInterval
+            // 
+            this.lblInterval.AutoSize = true;
+            this.lblInterval.Location = new System.Drawing.Point(99, 74);
+            this.lblInterval.Name = "lblInterval";
+            this.lblInterval.Size = new System.Drawing.Size(42, 13);
+            this.lblInterval.TabIndex = 9;
+            this.lblInterval.Text = "Interval";
             // 
             // lblClickY
             // 
@@ -135,32 +161,6 @@
             this.txtClickX.Size = new System.Drawing.Size(46, 20);
             this.txtClickX.TabIndex = 5;
             // 
-            // lblInterval
-            // 
-            this.lblInterval.AutoSize = true;
-            this.lblInterval.Location = new System.Drawing.Point(99, 74);
-            this.lblInterval.Name = "lblInterval";
-            this.lblInterval.Size = new System.Drawing.Size(42, 13);
-            this.lblInterval.TabIndex = 9;
-            this.lblInterval.Text = "Interval";
-            // 
-            // txtClicksPerSec
-            // 
-            this.txtClicksPerSec.Location = new System.Drawing.Point(147, 71);
-            this.txtClicksPerSec.Name = "txtClicksPerSec";
-            this.txtClicksPerSec.Size = new System.Drawing.Size(46, 20);
-            this.txtClicksPerSec.TabIndex = 10;
-            // 
-            // btnClickeroo
-            // 
-            this.btnClickeroo.Location = new System.Drawing.Point(94, 114);
-            this.btnClickeroo.Name = "btnClickeroo";
-            this.btnClickeroo.Size = new System.Drawing.Size(99, 27);
-            this.btnClickeroo.TabIndex = 11;
-            this.btnClickeroo.Text = "Start Clicking";
-            this.btnClickeroo.UseVisualStyleBackColor = true;
-            this.btnClickeroo.Click += new System.EventHandler(this.btnClickeroo_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -190,7 +190,7 @@
         private System.Windows.Forms.Label lblMouseCoords;
         private System.Windows.Forms.GroupBox grpClick;
         private System.Windows.Forms.Button btnClickeroo;
-        private System.Windows.Forms.TextBox txtClicksPerSec;
+        private System.Windows.Forms.TextBox txtClickInterval;
         private System.Windows.Forms.Label lblInterval;
         private System.Windows.Forms.Label lblClickY;
         private System.Windows.Forms.Label lblClickX;

@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Forms;
 using MouseKeyboardActivityMonitor;
@@ -25,6 +18,7 @@ namespace MadClickzYo
         public MainForm()
         {
             InitializeComponent();
+
             mouseHook = new MouseHookListener(new GlobalHooker());
             mouseHook.Enabled = true;
             mouseHook.MouseMove += MouseEvent_MouseMove;
@@ -41,7 +35,7 @@ namespace MadClickzYo
             if (e.KeyChar == 's' && timer.Enabled)
             {
                 timer.Stop();
-                MessageBox.Show("Clickzy stopped.");
+                MessageBox.Show("Clicking stopped.", "Stopped", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             }
         }
 
@@ -53,19 +47,26 @@ namespace MadClickzYo
 
         private void btnClickeroo_Click(object sender, EventArgs e)
         {
-            if (timer == null)
+            if (txtClickX.Text == "" || txtClickY.Text == "" || txtClickInterval.Text == "")
             {
-                timer = new System.Timers.Timer(Int32.Parse(txtClicksPerSec.Text));
-                timer.Elapsed += AutoClickEvent;
+                MessageBox.Show("Missing click parameters", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            else
+            {
+                if (timer == null)
+                {
+                    timer = new System.Timers.Timer(Int32.Parse(txtClickInterval.Text));
+                    timer.Elapsed += AutoClickEvent;
+                }
 
-            timer.Start();
+                timer.Start();
+            }
         }
 
         private void AutoClickEvent(Object source, ElapsedEventArgs e)
         {
             // getting the InputSimulator to move the mouse to an absolute position on
-            // multiple monitors in staggered positions is a pain, so just use Cursor for now
+            // multiple monitors in staggered positions is a pain, so just use Cursor for now.
             Cursor.Position = new Point(Int32.Parse(txtClickX.Text), Int32.Parse(txtClickY.Text));
             input.Mouse.LeftButtonClick();
         }
