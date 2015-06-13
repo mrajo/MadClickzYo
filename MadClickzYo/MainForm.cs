@@ -32,10 +32,9 @@ namespace MadClickzYo
 
         private void KeyboardEvent_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 's' && timer.Enabled)
+            if (e.KeyChar == 's')
             {
-                timer.Stop();
-                MessageBox.Show("Clicking stopped.", "Stopped", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                toggleTimer();
             }
         }
 
@@ -47,9 +46,21 @@ namespace MadClickzYo
 
         private void btnClickeroo_Click(object sender, EventArgs e)
         {
-            if (txtClickX.Text == "" || txtClickY.Text == "" || txtClickInterval.Text == "")
+            toggleTimer();
+        }
+
+        private void startTimer()
+        {
+            int x;
+            int y;
+            int interval;
+            bool checkX = Int32.TryParse(txtClickX.Text, out x);
+            bool checkY = Int32.TryParse(txtClickY.Text, out y);
+            bool checkInterval = Int32.TryParse(txtClickInterval.Text, out interval);
+
+            if (!checkX || !checkY || !checkInterval)
             {
-                MessageBox.Show("Missing click parameters", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Parameters must be integers", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -60,6 +71,30 @@ namespace MadClickzYo
                 }
 
                 timer.Start();
+                statusText.Text = "Clicking";
+                btnClickeroo.Text = "Stop";
+            }
+        }
+
+        private void stopTimer()
+        {
+            if (timer != null && timer.Enabled)
+            {
+                timer.Stop();
+                statusText.Text = "Stopped";
+                btnClickeroo.Text = "Start";
+            }
+        }
+
+        private void toggleTimer()
+        {
+            if (timer != null && timer.Enabled)
+            {
+                stopTimer();
+            }
+            else
+            {
+                startTimer();
             }
         }
 

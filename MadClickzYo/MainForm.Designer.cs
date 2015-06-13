@@ -42,6 +42,9 @@
             this.txtClickY = new System.Windows.Forms.TextBox();
             this.txtClickX = new System.Windows.Forms.TextBox();
             this.grpClick.SuspendLayout();
+            this.statusBar = new System.Windows.Forms.StatusStrip();
+            this.statusText = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtMouseX
@@ -161,12 +164,29 @@
             this.txtClickX.Size = new System.Drawing.Size(46, 20);
             this.txtClickX.TabIndex = 5;
             // 
+            // statusBar
+            // 
+            this.statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusText});
+            this.statusBar.Location = new System.Drawing.Point(0, 197);
+            this.statusBar.Name = "statusBar";
+            this.statusBar.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.statusBar.Size = new System.Drawing.Size(278, 22);
+            this.statusBar.TabIndex = 7;
+            this.statusBar.Text = "statusStrip1";
+            // 
+            // statusText
+            // 
+            this.statusText.Name = "statusText";
+            this.statusText.Size = new System.Drawing.Size(39, 17);
+            this.statusText.Text = "Ready";
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 232);
             this.Controls.Add(this.grpClick);
+            this.Controls.Add(this.statusBar);
             this.Controls.Add(this.lblMouseCoords);
             this.Controls.Add(this.lblMouseY);
             this.Controls.Add(this.lblMouseX);
@@ -176,6 +196,8 @@
             this.Text = "Clickzy";
             this.grpClick.ResumeLayout(false);
             this.grpClick.PerformLayout();
+            this.statusBar.ResumeLayout(false);
+            this.statusBar.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
