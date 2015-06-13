@@ -36,6 +36,17 @@ namespace MadClickzYo
             {
                 toggleTimer();
             }
+
+            if (e.KeyChar == 'c')
+            {
+                captureCoords();
+            }
+        }
+
+        private void captureCoords()
+        {
+            txtClickX.Text = Cursor.Position.X.ToString();
+            txtClickY.Text = Cursor.Position.Y.ToString();
         }
 
         private void MouseEvent_MouseMove(object sender, MouseEventArgs e)
