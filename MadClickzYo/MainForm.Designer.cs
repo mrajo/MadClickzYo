@@ -33,7 +33,8 @@
             this.lblMouseX = new System.Windows.Forms.Label();
             this.lblMouseY = new System.Windows.Forms.Label();
             this.lblMouseCoords = new System.Windows.Forms.Label();
-            this.grpClick = new System.Windows.Forms.GroupBox();
+            this.grpInstructions = new System.Windows.Forms.GroupBox();
+            this.lblInstructions = new System.Windows.Forms.Label();
             this.btnClickeroo = new System.Windows.Forms.Button();
             this.txtClickInterval = new System.Windows.Forms.TextBox();
             this.lblInterval = new System.Windows.Forms.Label();
@@ -41,9 +42,10 @@
             this.lblClickX = new System.Windows.Forms.Label();
             this.txtClickY = new System.Windows.Forms.TextBox();
             this.txtClickX = new System.Windows.Forms.TextBox();
-            this.grpClick.SuspendLayout();
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.statusText = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblClickCoords = new System.Windows.Forms.Label();
+            this.grpInstructions.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -90,52 +92,57 @@
             this.lblMouseCoords.TabIndex = 5;
             this.lblMouseCoords.Text = "Mouse Coords";
             // 
-            // grpClick
+            // grpInstructions
             // 
-            this.grpClick.Controls.Add(this.btnClickeroo);
-            this.grpClick.Controls.Add(this.txtClickInterval);
-            this.grpClick.Controls.Add(this.lblInterval);
-            this.grpClick.Controls.Add(this.lblClickY);
-            this.grpClick.Controls.Add(this.lblClickX);
-            this.grpClick.Controls.Add(this.txtClickY);
-            this.grpClick.Controls.Add(this.txtClickX);
-            this.grpClick.Location = new System.Drawing.Point(20, 59);
-            this.grpClick.Name = "grpClick";
-            this.grpClick.Size = new System.Drawing.Size(244, 156);
-            this.grpClick.TabIndex = 6;
-            this.grpClick.TabStop = false;
-            this.grpClick.Text = "Click Parameters";
+            this.grpInstructions.Controls.Add(this.lblInstructions);
+            this.grpInstructions.Location = new System.Drawing.Point(20, 90);
+            this.grpInstructions.Name = "grpInstructions";
+            this.grpInstructions.Size = new System.Drawing.Size(244, 92);
+            this.grpInstructions.TabIndex = 6;
+            this.grpInstructions.TabStop = false;
+            this.grpInstructions.Text = "Instructions";
+            // 
+            // lblInstructions
+            // 
+            this.lblInstructions.Location = new System.Drawing.Point(17, 20);
+            this.lblInstructions.Name = "lblInstructions";
+            this.lblInstructions.Size = new System.Drawing.Size(221, 80);
+            this.lblInstructions.TabIndex = 0;
+            this.lblInstructions.Text = "Global hot keys while open:\r\n\r\nS - start/stop clicking\r\nC - capture current mouse" +
+    " position";
             // 
             // btnClickeroo
             // 
-            this.btnClickeroo.Location = new System.Drawing.Point(94, 114);
+            this.btnClickeroo.Location = new System.Drawing.Point(195, 64);
             this.btnClickeroo.Name = "btnClickeroo";
-            this.btnClickeroo.Size = new System.Drawing.Size(99, 27);
+            this.btnClickeroo.Size = new System.Drawing.Size(70, 20);
             this.btnClickeroo.TabIndex = 11;
-            this.btnClickeroo.Text = "Start Clicking";
+            this.btnClickeroo.Text = "Start";
             this.btnClickeroo.UseVisualStyleBackColor = true;
             this.btnClickeroo.Click += new System.EventHandler(this.btnClickeroo_Click);
             // 
             // txtClickInterval
             // 
-            this.txtClickInterval.Location = new System.Drawing.Point(147, 71);
+            this.txtClickInterval.Location = new System.Drawing.Point(138, 64);
+            this.txtClickInterval.MaxLength = 8;
             this.txtClickInterval.Name = "txtClickInterval";
             this.txtClickInterval.Size = new System.Drawing.Size(46, 20);
             this.txtClickInterval.TabIndex = 10;
+            this.txtClickInterval.Text = "100";
             // 
             // lblInterval
             // 
             this.lblInterval.AutoSize = true;
-            this.lblInterval.Location = new System.Drawing.Point(99, 74);
+            this.lblInterval.Location = new System.Drawing.Point(68, 67);
             this.lblInterval.Name = "lblInterval";
-            this.lblInterval.Size = new System.Drawing.Size(42, 13);
+            this.lblInterval.Size = new System.Drawing.Size(64, 13);
             this.lblInterval.TabIndex = 9;
-            this.lblInterval.Text = "Interval";
+            this.lblInterval.Text = "Interval (ms)";
             // 
             // lblClickY
             // 
             this.lblClickY.AutoSize = true;
-            this.lblClickY.Location = new System.Drawing.Point(124, 31);
+            this.lblClickY.Location = new System.Drawing.Point(196, 41);
             this.lblClickY.Name = "lblClickY";
             this.lblClickY.Size = new System.Drawing.Size(17, 13);
             this.lblClickY.TabIndex = 8;
@@ -144,7 +151,7 @@
             // lblClickX
             // 
             this.lblClickX.AutoSize = true;
-            this.lblClickX.Location = new System.Drawing.Point(43, 31);
+            this.lblClickX.Location = new System.Drawing.Point(115, 41);
             this.lblClickX.Name = "lblClickX";
             this.lblClickX.Size = new System.Drawing.Size(17, 13);
             this.lblClickX.TabIndex = 7;
@@ -152,14 +159,16 @@
             // 
             // txtClickY
             // 
-            this.txtClickY.Location = new System.Drawing.Point(147, 28);
+            this.txtClickY.Location = new System.Drawing.Point(219, 38);
+            this.txtClickY.MaxLength = 5;
             this.txtClickY.Name = "txtClickY";
             this.txtClickY.Size = new System.Drawing.Size(46, 20);
             this.txtClickY.TabIndex = 6;
             // 
             // txtClickX
             // 
-            this.txtClickX.Location = new System.Drawing.Point(66, 28);
+            this.txtClickX.Location = new System.Drawing.Point(138, 38);
+            this.txtClickX.MaxLength = 5;
             this.txtClickX.Name = "txtClickX";
             this.txtClickX.Size = new System.Drawing.Size(46, 20);
             this.txtClickX.TabIndex = 5;
@@ -180,22 +189,42 @@
             this.statusText.Name = "statusText";
             this.statusText.Size = new System.Drawing.Size(39, 17);
             this.statusText.Text = "Ready";
+            // 
+            // lblClickCoords
+            // 
+            this.lblClickCoords.AutoSize = true;
+            this.lblClickCoords.Location = new System.Drawing.Point(43, 41);
+            this.lblClickCoords.Name = "lblClickCoords";
+            this.lblClickCoords.Size = new System.Drawing.Size(66, 13);
+            this.lblClickCoords.TabIndex = 9;
+            this.lblClickCoords.Text = "Click Coords";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 232);
-            this.Controls.Add(this.grpClick);
+            this.ClientSize = new System.Drawing.Size(278, 219);
+            this.Controls.Add(this.btnClickeroo);
+            this.Controls.Add(this.lblClickCoords);
+            this.Controls.Add(this.lblInterval);
+            this.Controls.Add(this.txtClickInterval);
             this.Controls.Add(this.statusBar);
+            this.Controls.Add(this.grpInstructions);
             this.Controls.Add(this.lblMouseCoords);
+            this.Controls.Add(this.lblClickY);
             this.Controls.Add(this.lblMouseY);
+            this.Controls.Add(this.lblClickX);
             this.Controls.Add(this.lblMouseX);
+            this.Controls.Add(this.txtClickY);
+            this.Controls.Add(this.txtClickX);
             this.Controls.Add(this.txtMouseY);
             this.Controls.Add(this.txtMouseX);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "MainForm";
-            this.Text = "Clickzy";
-            this.grpClick.ResumeLayout(false);
-            this.grpClick.PerformLayout();
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.Text = "MadClickzYo";
+            this.grpInstructions.ResumeLayout(false);
             this.statusBar.ResumeLayout(false);
             this.statusBar.PerformLayout();
             this.ResumeLayout(false);
@@ -210,7 +239,7 @@
         private System.Windows.Forms.Label lblMouseX;
         private System.Windows.Forms.Label lblMouseY;
         private System.Windows.Forms.Label lblMouseCoords;
-        private System.Windows.Forms.GroupBox grpClick;
+        private System.Windows.Forms.GroupBox grpInstructions;
         private System.Windows.Forms.Button btnClickeroo;
         private System.Windows.Forms.TextBox txtClickInterval;
         private System.Windows.Forms.Label lblInterval;
@@ -218,6 +247,10 @@
         private System.Windows.Forms.Label lblClickX;
         private System.Windows.Forms.TextBox txtClickY;
         private System.Windows.Forms.TextBox txtClickX;
+        private System.Windows.Forms.StatusStrip statusBar;
+        private System.Windows.Forms.ToolStripStatusLabel statusText;
+        private System.Windows.Forms.Label lblClickCoords;
+        private System.Windows.Forms.Label lblInstructions;
     }
 }
 
