@@ -33,8 +33,8 @@
             this.lblMouseX = new System.Windows.Forms.Label();
             this.lblMouseY = new System.Windows.Forms.Label();
             this.lblMouseCoords = new System.Windows.Forms.Label();
-            this.grpInstructions = new System.Windows.Forms.GroupBox();
-            this.lblInstructions = new System.Windows.Forms.Label();
+            this.grpHotKeys = new System.Windows.Forms.GroupBox();
+            this.lblHotKeys = new System.Windows.Forms.Label();
             this.btnClickeroo = new System.Windows.Forms.Button();
             this.txtClickInterval = new System.Windows.Forms.TextBox();
             this.lblInterval = new System.Windows.Forms.Label();
@@ -45,7 +45,7 @@
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.statusText = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblClickCoords = new System.Windows.Forms.Label();
-            this.grpInstructions.SuspendLayout();
+            this.grpHotKeys.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -92,24 +92,24 @@
             this.lblMouseCoords.TabIndex = 5;
             this.lblMouseCoords.Text = "Mouse Coords";
             // 
-            // grpInstructions
+            // grpHotKeys
             // 
-            this.grpInstructions.Controls.Add(this.lblInstructions);
-            this.grpInstructions.Location = new System.Drawing.Point(20, 90);
-            this.grpInstructions.Name = "grpInstructions";
-            this.grpInstructions.Size = new System.Drawing.Size(244, 92);
-            this.grpInstructions.TabIndex = 6;
-            this.grpInstructions.TabStop = false;
-            this.grpInstructions.Text = "Instructions";
+            this.grpHotKeys.Controls.Add(this.lblHotKeys);
+            this.grpHotKeys.Location = new System.Drawing.Point(20, 90);
+            this.grpHotKeys.Name = "grpHotKeys";
+            this.grpHotKeys.Size = new System.Drawing.Size(244, 92);
+            this.grpHotKeys.TabIndex = 6;
+            this.grpHotKeys.TabStop = false;
+            this.grpHotKeys.Text = "HotKeys.";
             // 
-            // lblInstructions
+            // lblHotKeys
             // 
-            this.lblInstructions.Location = new System.Drawing.Point(17, 20);
-            this.lblInstructions.Name = "lblInstructions";
-            this.lblInstructions.Size = new System.Drawing.Size(221, 80);
-            this.lblInstructions.TabIndex = 0;
-            this.lblInstructions.Text = "Global hot keys while open:\r\n\r\nS - start/stop clicking\r\nC - capture current mouse" +
-    " position";
+            this.lblHotKeys.Location = new System.Drawing.Point(17, 20);
+            this.lblHotKeys.Name = "lblHotKeys";
+            this.lblHotKeys.Size = new System.Drawing.Size(221, 80);
+            this.lblHotKeys.TabIndex = 0;
+            this.lblHotKeys.Text = "X - start/stop clicking\r\nC - capture current mouse position\r\nScroll Lock - toggle" +
+    "s X and C keyboard hook";
             // 
             // btnClickeroo
             // 
@@ -209,7 +209,7 @@
             this.Controls.Add(this.lblInterval);
             this.Controls.Add(this.txtClickInterval);
             this.Controls.Add(this.statusBar);
-            this.Controls.Add(this.grpInstructions);
+            this.Controls.Add(this.grpHotKeys);
             this.Controls.Add(this.lblMouseCoords);
             this.Controls.Add(this.lblClickY);
             this.Controls.Add(this.lblMouseY);
@@ -224,7 +224,7 @@
             this.Name = "MainForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "MadClickzYo";
-            this.grpInstructions.ResumeLayout(false);
+            this.grpHotKeys.ResumeLayout(false);
             this.statusBar.ResumeLayout(false);
             this.statusBar.PerformLayout();
             this.ResumeLayout(false);
@@ -239,7 +239,7 @@
         private System.Windows.Forms.Label lblMouseX;
         private System.Windows.Forms.Label lblMouseY;
         private System.Windows.Forms.Label lblMouseCoords;
-        private System.Windows.Forms.GroupBox grpInstructions;
+        private System.Windows.Forms.GroupBox grpHotKeys;
         private System.Windows.Forms.Button btnClickeroo;
         private System.Windows.Forms.TextBox txtClickInterval;
         private System.Windows.Forms.Label lblInterval;
@@ -250,7 +250,7 @@
         private System.Windows.Forms.StatusStrip statusBar;
         private System.Windows.Forms.ToolStripStatusLabel statusText;
         private System.Windows.Forms.Label lblClickCoords;
-        private System.Windows.Forms.Label lblInstructions;
+        private System.Windows.Forms.Label lblHotKeys;
     }
 }
 

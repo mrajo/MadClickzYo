@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Drawing;
 using System.Timers;
+using Timer = System.Timers.Timer;
 using System.Windows.Forms;
-using MouseKeyboardActivityMonitor;
-using MouseKeyboardActivityMonitor.WinApi;
+using Gma.System.MouseKeyHook;
 using WindowsInput;
 
 namespace MadClickzYo
@@ -11,36 +11,48 @@ namespace MadClickzYo
     public partial class MainForm : Form
     {
         private InputSimulator input;
-        private readonly MouseHookListener mouseHook;
-        private readonly KeyboardHookListener keyboardHook;
-        private System.Timers.Timer timer;
+        private Timer timer;
+        private IKeyboardMouseEvents globalHook;
+        private bool hooked;
+
+        private const string STATUS_READY = "Ready";
+        private const string STATUS_DISABLED = "Disabled";
+        private const string STATUS_RUNNING = "Clicking";
 
         public MainForm()
         {
             InitializeComponent();
 
-            mouseHook = new MouseHookListener(new GlobalHooker());
-            mouseHook.Enabled = true;
-            mouseHook.MouseMove += MouseEvent_MouseMove;
-
-            keyboardHook = new KeyboardHookListener(new GlobalHooker());
-            keyboardHook.Enabled = true;
-            keyboardHook.KeyPress += KeyboardEvent_KeyPress;
-
             input = new InputSimulator();
+            globalHook = Hook.GlobalEvents();
+            enableHooks();
         }
 
-        private void KeyboardEvent_KeyPress(object sender, KeyPressEventArgs e)
+        protected override void OnFormClosed(FormClosedEventArgs e)
         {
-            if (e.KeyChar == 's')
-            {
-                toggleTimer();
-            }
+            removeHooks();
+            globalHook.Dispose();
+            base.OnFormClosed(e);
+        }
 
-            if (e.KeyChar == 'c')
-            {
-                captureCoords();
-            }
+        private void enableHooks()
+        {
+            globalHook.MouseMove += MouseEvent_MouseMove;
+            globalHook.KeyUp += KeyboardEvent_KeyUp;
+            statusText.Text = STATUS_READY;
+            hooked = true;
+        }
+
+        private void removeHooks()
+        {
+            globalHook.MouseMoveExt -= MouseEvent_MouseMove;
+            globalHook.KeyUp -= KeyboardEvent_KeyUp;
+        }
+
+        private void toggleHooks()
+        {
+            hooked = !hooked;
+            statusText.Text = STATUS_DISABLED;
         }
 
         private void captureCoords()
@@ -49,11 +61,30 @@ namespace MadClickzYo
             txtClickY.Text = Cursor.Position.Y.ToString();
         }
 
+        private void KeyboardEvent_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (hooked && e.KeyCode == Keys.X)
+            {
+                toggleTimer();
+            }
+
+            if (e.KeyCode == Keys.C)
+            {
+                captureCoords();
+            }
+
+            if (e.KeyCode == Keys.Scroll)
+            {
+                toggleHooks();
+            }
+        }
+
         private void MouseEvent_MouseMove(object sender, MouseEventArgs e)
         {
             txtMouseX.Text = e.X.ToString();
             txtMouseY.Text = e.Y.ToString();
         }
+
 
         private void btnClickeroo_Click(object sender, EventArgs e)
         {
@@ -82,7 +113,7 @@ namespace MadClickzYo
                 }
 
                 timer.Start();
-                statusText.Text = "Clicking";
+                statusText.Text = STATUS_RUNNING;
                 btnClickeroo.Text = "Stop";
             }
         }
@@ -92,7 +123,7 @@ namespace MadClickzYo
             if (timer != null && timer.Enabled)
             {
                 timer.Stop();
-                statusText.Text = "Stopped";
+                statusText.Text = STATUS_READY;
                 btnClickeroo.Text = "Start";
             }
         }

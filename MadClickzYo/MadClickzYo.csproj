@@ -60,9 +60,8 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MouseKeyboardActivityMonitor, Version=4.0.5150.10665, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>dependencies\MouseKeyboardActivityMonitor.dll</HintPath>
+    <Reference Include="Gma.System.MouseKeyHook">
+      <HintPath>..\packages\MouseKeyHook.5.1.0\lib\net40\Gma.System.MouseKeyHook.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
