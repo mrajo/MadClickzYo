@@ -81,6 +81,11 @@ namespace MadClickzYo
 
         private void MouseEvent_MouseMove(object sender, MouseEventArgs e)
         {
+            if (checkAutoPause.Checked)
+            {
+                stopTimer();
+            }
+
             txtMouseX.Text = e.X.ToString();
             txtMouseY.Text = e.Y.ToString();
         }
