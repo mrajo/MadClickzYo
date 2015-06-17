@@ -45,6 +45,7 @@
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.statusText = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblClickCoords = new System.Windows.Forms.Label();
+            this.checkAutoCapture = new System.Windows.Forms.CheckBox();
             this.grpHotKeys.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.SuspendLayout();
@@ -95,18 +96,18 @@
             // grpHotKeys
             // 
             this.grpHotKeys.Controls.Add(this.lblHotKeys);
-            this.grpHotKeys.Location = new System.Drawing.Point(20, 90);
+            this.grpHotKeys.Location = new System.Drawing.Point(20, 114);
             this.grpHotKeys.Name = "grpHotKeys";
-            this.grpHotKeys.Size = new System.Drawing.Size(244, 92);
+            this.grpHotKeys.Size = new System.Drawing.Size(244, 68);
             this.grpHotKeys.TabIndex = 6;
             this.grpHotKeys.TabStop = false;
             this.grpHotKeys.Text = "HotKeys.";
             // 
             // lblHotKeys
             // 
-            this.lblHotKeys.Location = new System.Drawing.Point(17, 20);
+            this.lblHotKeys.Location = new System.Drawing.Point(6, 16);
             this.lblHotKeys.Name = "lblHotKeys";
-            this.lblHotKeys.Size = new System.Drawing.Size(221, 80);
+            this.lblHotKeys.Size = new System.Drawing.Size(221, 45);
             this.lblHotKeys.TabIndex = 0;
             this.lblHotKeys.Text = "X - start/stop clicking\r\nC - capture current mouse position\r\nScroll Lock - toggle" +
     "s X and C keyboard hook";
@@ -199,11 +200,24 @@
             this.lblClickCoords.TabIndex = 9;
             this.lblClickCoords.Text = "Click Coords";
             // 
+            // checkAutoCapture
+            // 
+            this.checkAutoCapture.AutoSize = true;
+            this.checkAutoCapture.Checked = true;
+            this.checkAutoCapture.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkAutoCapture.Location = new System.Drawing.Point(138, 91);
+            this.checkAutoCapture.Name = "checkAutoCapture";
+            this.checkAutoCapture.Size = new System.Drawing.Size(130, 17);
+            this.checkAutoCapture.TabIndex = 12;
+            this.checkAutoCapture.Text = "Auto Capture On Start";
+            this.checkAutoCapture.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(278, 219);
+            this.Controls.Add(this.checkAutoCapture);
             this.Controls.Add(this.btnClickeroo);
             this.Controls.Add(this.lblClickCoords);
             this.Controls.Add(this.lblInterval);
@@ -251,6 +265,7 @@
         private System.Windows.Forms.ToolStripStatusLabel statusText;
         private System.Windows.Forms.Label lblClickCoords;
         private System.Windows.Forms.Label lblHotKeys;
+        private System.Windows.Forms.CheckBox checkAutoCapture;
     }
 }
 

@@ -93,6 +93,11 @@ namespace MadClickzYo
 
         private void startTimer()
         {
+            if (checkAutoCapture.Checked)
+            {
+                captureCoords();
+            }
+
             int x;
             int y;
             int interval;
