@@ -32,11 +32,8 @@
             this.statusText = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabs = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.grpHotKeys = new System.Windows.Forms.GroupBox();
-            this.lblHotKeys = new System.Windows.Forms.Label();
+            this.checkAutoPause = new System.Windows.Forms.CheckBox();
             this.checkAutoCapture = new System.Windows.Forms.CheckBox();
-            this.btnClickeroo = new System.Windows.Forms.Button();
             this.lblClickCoords = new System.Windows.Forms.Label();
             this.lblInterval = new System.Windows.Forms.Label();
             this.txtClickInterval = new System.Windows.Forms.TextBox();
@@ -49,7 +46,9 @@
             this.txtClickX = new System.Windows.Forms.TextBox();
             this.txtMouseY = new System.Windows.Forms.TextBox();
             this.txtMouseX = new System.Windows.Forms.TextBox();
-            this.checkAutoPause = new System.Windows.Forms.CheckBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.grpHotKeys = new System.Windows.Forms.GroupBox();
+            this.lblHotKeys = new System.Windows.Forms.Label();
             this.statusBar.SuspendLayout();
             this.tabs.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -89,7 +88,6 @@
             // 
             this.tabPage1.Controls.Add(this.checkAutoPause);
             this.tabPage1.Controls.Add(this.checkAutoCapture);
-            this.tabPage1.Controls.Add(this.btnClickeroo);
             this.tabPage1.Controls.Add(this.lblClickCoords);
             this.tabPage1.Controls.Add(this.lblInterval);
             this.tabPage1.Controls.Add(this.txtClickInterval);
@@ -110,35 +108,17 @@
             this.tabPage1.Text = "Options";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // checkAutoPause
             // 
-            this.tabPage2.Controls.Add(this.grpHotKeys);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(318, 202);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Instructions";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // grpHotKeys
-            // 
-            this.grpHotKeys.Controls.Add(this.lblHotKeys);
-            this.grpHotKeys.Location = new System.Drawing.Point(6, 6);
-            this.grpHotKeys.Name = "grpHotKeys";
-            this.grpHotKeys.Size = new System.Drawing.Size(306, 68);
-            this.grpHotKeys.TabIndex = 7;
-            this.grpHotKeys.TabStop = false;
-            this.grpHotKeys.Text = "HotKeys.";
-            // 
-            // lblHotKeys
-            // 
-            this.lblHotKeys.Location = new System.Drawing.Point(6, 16);
-            this.lblHotKeys.Name = "lblHotKeys";
-            this.lblHotKeys.Size = new System.Drawing.Size(221, 45);
-            this.lblHotKeys.TabIndex = 0;
-            this.lblHotKeys.Text = "X - start/stop clicking\r\nC - capture current mouse position\r\nScroll Lock - toggle" +
-    "s X and C keyboard hook";
+            this.checkAutoPause.AutoSize = true;
+            this.checkAutoPause.Checked = true;
+            this.checkAutoPause.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkAutoPause.Location = new System.Drawing.Point(115, 126);
+            this.checkAutoPause.Name = "checkAutoPause";
+            this.checkAutoPause.Size = new System.Drawing.Size(178, 17);
+            this.checkAutoPause.TabIndex = 27;
+            this.checkAutoPause.Text = "Pause Clicking On Mouse Move";
+            this.checkAutoPause.UseVisualStyleBackColor = true;
             // 
             // checkAutoCapture
             // 
@@ -151,15 +131,6 @@
             this.checkAutoCapture.TabIndex = 26;
             this.checkAutoCapture.Text = "Auto Capture On Start";
             this.checkAutoCapture.UseVisualStyleBackColor = true;
-            // 
-            // btnClickeroo
-            // 
-            this.btnClickeroo.Location = new System.Drawing.Point(172, 69);
-            this.btnClickeroo.Name = "btnClickeroo";
-            this.btnClickeroo.Size = new System.Drawing.Size(70, 20);
-            this.btnClickeroo.TabIndex = 25;
-            this.btnClickeroo.Text = "Start";
-            this.btnClickeroo.UseVisualStyleBackColor = true;
             // 
             // lblClickCoords
             // 
@@ -265,17 +236,35 @@
             this.txtMouseX.Size = new System.Drawing.Size(46, 20);
             this.txtMouseX.TabIndex = 13;
             // 
-            // checkAutoPause
+            // tabPage2
             // 
-            this.checkAutoPause.AutoSize = true;
-            this.checkAutoPause.Checked = true;
-            this.checkAutoPause.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkAutoPause.Location = new System.Drawing.Point(115, 126);
-            this.checkAutoPause.Name = "checkAutoPause";
-            this.checkAutoPause.Size = new System.Drawing.Size(178, 17);
-            this.checkAutoPause.TabIndex = 27;
-            this.checkAutoPause.Text = "Pause Clicking On Mouse Move";
-            this.checkAutoPause.UseVisualStyleBackColor = true;
+            this.tabPage2.Controls.Add(this.grpHotKeys);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(318, 202);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Instructions";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // grpHotKeys
+            // 
+            this.grpHotKeys.Controls.Add(this.lblHotKeys);
+            this.grpHotKeys.Location = new System.Drawing.Point(6, 6);
+            this.grpHotKeys.Name = "grpHotKeys";
+            this.grpHotKeys.Size = new System.Drawing.Size(306, 68);
+            this.grpHotKeys.TabIndex = 7;
+            this.grpHotKeys.TabStop = false;
+            this.grpHotKeys.Text = "HotKeys.";
+            // 
+            // lblHotKeys
+            // 
+            this.lblHotKeys.Location = new System.Drawing.Point(6, 16);
+            this.lblHotKeys.Name = "lblHotKeys";
+            this.lblHotKeys.Size = new System.Drawing.Size(221, 45);
+            this.lblHotKeys.TabIndex = 0;
+            this.lblHotKeys.Text = "X - start/stop clicking\r\nC - capture current mouse position\r\nScroll Lock - toggle" +
+    "s X and C keyboard hook";
             // 
             // MainForm
             // 
@@ -308,7 +297,6 @@
         private System.Windows.Forms.TabControl tabs;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.CheckBox checkAutoCapture;
-        private System.Windows.Forms.Button btnClickeroo;
         private System.Windows.Forms.Label lblClickCoords;
         private System.Windows.Forms.Label lblInterval;
         private System.Windows.Forms.TextBox txtClickInterval;

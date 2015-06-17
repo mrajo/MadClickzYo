@@ -81,19 +81,13 @@ namespace MadClickzYo
 
         private void MouseEvent_MouseMove(object sender, MouseEventArgs e)
         {
-            if (checkAutoPause.Checked)
+            if (checkAutoPause.Checked && timer != null && timer.Enabled)
             {
                 stopTimer();
             }
 
             txtMouseX.Text = e.X.ToString();
             txtMouseY.Text = e.Y.ToString();
-        }
-
-
-        private void btnClickeroo_Click(object sender, EventArgs e)
-        {
-            toggleTimer();
         }
 
         private void startTimer()
@@ -118,13 +112,12 @@ namespace MadClickzYo
             {
                 if (timer == null)
                 {
-                    timer = new System.Timers.Timer(Int32.Parse(txtClickInterval.Text));
+                    timer = new Timer(Int32.Parse(txtClickInterval.Text));
                     timer.Elapsed += AutoClickEvent;
                 }
 
                 timer.Start();
                 statusText.Text = STATUS_RUNNING;
-                btnClickeroo.Text = "Stop";
             }
         }
 
@@ -134,7 +127,6 @@ namespace MadClickzYo
             {
                 timer.Stop();
                 statusText.Text = STATUS_READY;
-                btnClickeroo.Text = "Start";
             }
         }
 
