@@ -22,8 +22,11 @@ operate with hotkeys.
 ### s
 Toggles the clicker
 
-### c
+### x
 Captures the current mouse position in the clicker parameter boxes
+
+### Scroll Lock
+Toggles s/x hotkeys
 
 ## License
 MIT © [mrajo](http://github.com/mrajo)
