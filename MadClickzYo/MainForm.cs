@@ -52,7 +52,7 @@ namespace MadClickzYo
         private void toggleHooks()
         {
             hooked = !hooked;
-            statusText.Text = STATUS_DISABLED;
+            statusText.Text = hooked ? STATUS_READY : STATUS_DISABLED;
         }
 
         private void captureCoords()
